@@ -1,21 +1,38 @@
-addon.name = 'FishSense'
-addon.author = 'SeyrenEdge'
-addon.version = '0.1.0'
-addon.desc = 'Advanced Fishing Assistant'
-addon.link = 'https://github.com/SeyrenEdge/FishSense'
+addon.name      = 'FishSense';
+addon.author    = 'SeyrenEdge';
+addon.version   = '0.1.0';
+addon.desc      = 'Advanced Fishing Assistant';
+addon.link      = 'https://github.com/SeyrenEdge/FishSense';
 
-require('common')
+require('common');
 
-local Bootstrap = require('bootstrap')
+local logger   = require('modules.logger');
+local config   = require('modules.config');
+local gui      = require('modules.gui');
+local session  = require('modules.session');
+local database = require('modules.database');
 
-ashita.events.register('load', 'FishSense_Load', function()
-    Bootstrap.load()
-end)
+ashita.events.register('load', 'fishsense_load', function ()
 
-ashita.events.register('unload', 'FishSense_Unload', function()
-    Bootstrap.unload()
-end)
+    logger.info('Loaded.');
 
-ashita.events.register('d3d_present', 'FishSense_Render', function()
-    Bootstrap.render()
-end)
+    config.load();
+    session.initialize();
+    database.initialize();
+    gui.initialize();
+
+end);
+
+ashita.events.register('unload', 'fishsense_unload', function ()
+
+    config.save();
+
+    logger.info('Unloaded.');
+
+end);
+
+ashita.events.register('d3d_present', 'fishsense_present', function ()
+
+    gui.render();
+
+end);
