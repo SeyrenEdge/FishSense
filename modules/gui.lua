@@ -1,27 +1,24 @@
 local gui = {}
 
-gui.state = {
-    initialized = false,
-}
+local state = require('modules.gui.state')
+local window = require('modules.gui.window')
 
 function gui.initialize()
-
-    if gui.state.initialized then
-        return
-    end
-
-    gui.state.initialized = true
-
+    window.initialize()
 end
 
 function gui.render()
 
-    if not gui.state.initialized then
+    if not state.isVisible() then
         return
     end
 
-    -- ImGui window will be added in the next step.
+    window.render()
 
+end
+
+function gui.toggle()
+    state.toggle()
 end
 
 return gui
