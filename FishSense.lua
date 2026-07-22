@@ -4,6 +4,10 @@ addon.version   = '0.2.0';
 addon.desc      = 'Advanced Fishing Assistant';
 addon.link      = 'https://github.com/SeyrenEdge/FishSense';
 
+-- Auto-detect Ashita version compatibility (same pattern as XIUI)
+_G._XIUI_USE_ASHITA_4_3 = nil;
+
+require('handlers.imgui_compat');
 require('common');
 
 local logger   = require('modules.logger');
