@@ -1,17 +1,46 @@
-local window = {}
+local imgui = require('imgui')
 
-window.isOpen = true
+local state = require('modules.gui.state')
+
+local window = {}
 
 function window.initialize()
 end
 
 function window.render()
 
-    if not window.isOpen then
+    if not state.isVisible() then
         return
     end
 
-    -- Window rendering will be implemented once the ImGui wrapper is wired.
+    local visible = state.isVisible()
+
+    if imgui.Begin(state.getTitle(), visible) then
+
+        imgui.Text('FishSense')
+        imgui.Separator()
+
+        imgui.Text('Status')
+        imgui.BulletText('Addon loaded')
+
+        imgui.Spacing()
+
+        imgui.Text('Player')
+        imgui.TextColored({ 0.70, 0.70, 0.70, 1.00 }, 'Not implemented')
+
+        imgui.Spacing()
+
+        imgui.Text('Session')
+        imgui.TextColored({ 0.70, 0.70, 0.70, 1.00 }, 'Not implemented')
+
+        imgui.Spacing()
+
+        imgui.Text('Advisor')
+        imgui.TextColored({ 0.70, 0.70, 0.70, 1.00 }, 'Not implemented')
+
+    end
+
+    imgui.End()
 
 end
 
