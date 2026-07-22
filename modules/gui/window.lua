@@ -32,8 +32,8 @@ function window.render()
         imgui.Separator()
 
         imgui.Text(string.format('Name      : %s', info.name ~= '' and info.name or 'Unknown'))
-        imgui.Text(string.format('Main Job  : %s', info.mainJob ~= '' and info.mainJob or '--'))
-        imgui.Text(string.format('Sub Job   : %s', info.subJob ~= '' and info.subJob or '--'))
+        imgui.Text(string.format('Main Job  : %s%d', info.mainJob ~= '' and info.mainJob or '--', info.mainLevel))
+        imgui.Text(string.format('Sub Job   : %s%d', info.subJob ~= '' and info.subJob or '--', info.subLevel))
         imgui.Text(string.format('Zone      : %s', info.zone ~= '' and info.zone or '--'))
 
         imgui.Spacing()
