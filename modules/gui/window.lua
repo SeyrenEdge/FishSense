@@ -26,8 +26,15 @@ function window.render()
 
         imgui.Spacing()
 
+        local info = player.getInfo()
+
         imgui.Text('Player')
-        imgui.TextColored({ 0.70, 0.70, 0.70, 1.00 }, 'Not implemented')
+        imgui.Separator()
+
+        imgui.Text(string.format('Name      : %s', info.name ~= '' and info.name or 'Unknown'))
+        imgui.Text(string.format('Main Job  : %s', info.mainJob ~= '' and info.mainJob or '--'))
+        imgui.Text(string.format('Sub Job   : %s', info.subJob ~= '' and info.subJob or '--'))
+        imgui.Text(string.format('Zone      : %s', info.zone ~= '' and info.zone or '--'))
 
         imgui.Spacing()
 
