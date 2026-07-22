@@ -1,6 +1,7 @@
 local imgui = require('imgui')
 
 local state = require('modules.gui.state')
+local player = require('modules.player')
 
 local window = {}
 
