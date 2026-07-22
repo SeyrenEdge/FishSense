@@ -17,6 +17,14 @@ function gui.render()
 
 end
 
+function gui.show()
+    state.setVisible(true)
+end
+
+function gui.hide()
+    state.setVisible(false)
+end
+
 function gui.toggle()
     state.toggle()
 end
