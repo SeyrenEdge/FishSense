@@ -15,6 +15,7 @@ local config   = require('modules.config');
 local gui      = require('modules.gui');
 local session  = require('modules.session');
 local database = require('modules.database');
+local player = require('modules.player');
 
 ashita.events.register('load', 'fishsense_load', function ()
     logger.info('Loaded.');
@@ -23,6 +24,8 @@ ashita.events.register('load', 'fishsense_load', function ()
     session.initialize();
     database.initialize();
     gui.initialize();
+    player.initialize();    
+        
 end);
 
 ashita.events.register('unload', 'fishsense_unload', function ()
